@@ -1,0 +1,48 @@
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <%# <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"> %>
+  <%#   <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> %>
+  <%#   <span class="fs-4"> %>
+  <%#     <%= link_to 'Friend' , root_path %1> %>
+  <%#   </span> %>
+  <%# </a> %>
+
+  <%= link_to 'Friends' , root_path , class:"d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none h3"%> 
+
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <u><%= link_to '/home' , root_path , class:"nav-link link-dark"%></u>
+    </li>
+
+  <% if user_signed_in? %>
+    <li class="nav-item">
+      <u><%= link_to '/friends' , friends_path , class:"nav-link link-dark"%></u>
+    </li> 
+  <%end%>
+
+    <li class="nav-item">
+      <u><%= link_to '/about' , home_about_path , class:"nav-link link-dark"%></u>
+    </li>
+
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <u><%= link_to '/Sign out', destroy_user_session_path, method: :delete,class:"nav-link link-dark"%></u>
+      </li>
+  
+      <li class="nav-item">
+        <u><%= link_to '/My Profile',edit_user_registration_path,class:"nav-link link-dark"%></u>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <u><%= link_to '/Sign up',new_user_registration_path,class:"nav-link link-dark"%></u>
+      </li>
+
+      <li class="nav-item">
+        <u><%= link_to '/Sign in',user_session_path,class:"nav-link link-dark"%></u>
+      </li>
+  
+    <% end %>
+
+
+
+  </ul>
+</header>
